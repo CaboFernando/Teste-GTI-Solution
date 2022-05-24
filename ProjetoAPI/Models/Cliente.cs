@@ -35,7 +35,7 @@ namespace ProjetoAPI.Models
         public string Sexo { get; set; }
 
         [Required]
-        public string EstadoCivial { get; set; }
+        public string EstadoCivil { get; set; }
 
         [Required]
         public virtual Endereco Endereco { get; set; }

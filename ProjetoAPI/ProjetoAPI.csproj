@@ -162,6 +162,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -170,6 +171,10 @@
     <Compile Include="Migrations\202205241508237_Inicial.cs" />
     <Compile Include="Migrations\202205241508237_Inicial.designer.cs">
       <DependentUpon>202205241508237_Inicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205241532575_Correcao-Props.cs" />
+    <Compile Include="Migrations\202205241532575_Correcao-Props.designer.cs">
+      <DependentUpon>202205241532575_Correcao-Props.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
@@ -263,6 +268,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202205241508237_Inicial.resx">
       <DependentUpon>202205241508237_Inicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205241532575_Correcao-Props.resx">
+      <DependentUpon>202205241532575_Correcao-Props.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

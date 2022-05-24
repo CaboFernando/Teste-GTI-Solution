@@ -18,6 +18,7 @@ namespace ProjetoAPI.Models
         public string Sexo { get; set; }
         public string EstadoCivil { get; set; }
 
+        public int EnderecoId { get; set; }
         public string Logradouro { get; set; }
         public string Numero { get; set; }
         public string Complemento { get; set; }

@@ -1,6 +1,7 @@
 ﻿using ProjetoAPI.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -125,6 +126,51 @@ namespace ProjetoAPI.Controllers
                 context.SaveChanges();
             }
             return Ok(cliente);
+        }
+
+        [HttpPut]
+        public IHttpActionResult PutCliente(ClienteEnderecoDTO cliente)
+        {
+            if (!ModelState.IsValid || cliente == null)
+                return BadRequest("Dados de cliente inválidos");
+
+            using (var context = new AppDbContext())
+            {
+                var clienteSelecionado = context.Clientes.Where(c => c.ClienteId == cliente.ClienteId).FirstOrDefault<Cliente>();
+
+                if (clienteSelecionado != null)
+                {
+                    clienteSelecionado.Cpf = cliente.Cpf;
+                    clienteSelecionado.Nome = cliente.Nome;
+                    clienteSelecionado.Rg = cliente.Rg;
+                    clienteSelecionado.DataExpedicao = cliente.DataExpedicao;
+                    clienteSelecionado.OrgaoExpedicao = cliente.OrgaoExpedicao;
+                    clienteSelecionado.UfExpedicao = cliente.UfExpedicao;
+                    clienteSelecionado.DataNascimento = cliente.DataNascimento;
+                    clienteSelecionado.Sexo = cliente.Sexo;
+                    clienteSelecionado.EstadoCivil = cliente.EstadoCivil;
+
+                    context.Entry(clienteSelecionado).State = EntityState.Modified;
+
+                    var enderecoSelecionado = context.Enderecos.Where(c => c.EnderecoId == clienteSelecionado.EnderecoId).FirstOrDefault<Endereco>();
+
+                    if (enderecoSelecionado != null)
+                    {
+                        enderecoSelecionado.Logradouro = cliente.Logradouro;
+                        enderecoSelecionado.Numero = cliente.Numero;
+                        enderecoSelecionado.Complemento = cliente.Complemento;
+                        enderecoSelecionado.Bairro = cliente.Bairro;
+                        enderecoSelecionado.Cidade = cliente.Cidade;
+                        enderecoSelecionado.Uf = cliente.Uf;
+
+                        context.Entry(enderecoSelecionado).State = EntityState.Modified;
+                    }
+                    context.SaveChanges();
+                }
+                else
+                    return NotFound();
+            }
+            return Ok($"Cliente {cliente.Nome} atualizado com sucesso!");
         }
 
     }

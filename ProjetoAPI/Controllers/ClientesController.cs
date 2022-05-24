@@ -173,5 +173,35 @@ namespace ProjetoAPI.Controllers
             return Ok($"Cliente {cliente.Nome} atualizado com sucesso!");
         }
 
+        public IHttpActionResult DeleteCliente(int? id)
+        {
+            if (id == null)
+                return BadRequest("Dados inválidos");
+
+            var nomeCliente = "";
+
+            using (var context = new AppDbContext())
+            {
+                var clienteSelecionado = context.Clientes.Where(c => c.ClienteId == id).FirstOrDefault<Cliente>();
+
+                if (clienteSelecionado != null)
+                {
+                    nomeCliente = clienteSelecionado.Nome;
+
+                    context.Entry(clienteSelecionado).State = EntityState.Deleted;
+
+                    var enderecoSelecionado = context.Enderecos.Where(c => c.EnderecoId == clienteSelecionado.EnderecoId).FirstOrDefault<Endereco>();
+
+                    if (enderecoSelecionado != null)
+                        context.Entry(enderecoSelecionado).State = EntityState.Deleted;
+
+                    context.SaveChanges();
+                }
+                else
+                    return NotFound();
+            }
+            return Ok($"Cliente {nomeCliente} foi excluído com sucesso!");
+        }
+
     }
 }

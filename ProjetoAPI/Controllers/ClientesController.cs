@@ -11,7 +11,7 @@ namespace ProjetoAPI.Controllers
     public class ClientesController : ApiController
     {
         [HttpGet]
-        public IHttpActionResult GetTodosClientes(bool incluirEndereco = false)
+        public IHttpActionResult GetClientes(bool incluirEndereco = false)
         {
             IList<Cliente> clientes = null;
 
@@ -91,5 +91,41 @@ namespace ProjetoAPI.Controllers
                 return Ok(cliente);
             }
         }
+
+        [HttpPost]
+        public IHttpActionResult PostCliente(ClienteEnderecoDTO cliente)
+        {
+            if (!ModelState.IsValid || cliente == null)
+                return BadRequest("Dados de cliente inválidos");
+
+            using (var context = new AppDbContext())
+            {
+                context.Clientes.Add(new Cliente()
+                {
+                    Cpf = cliente.Cpf,
+                    Nome = cliente.Nome,
+                    Rg = cliente.Rg,
+                    DataExpedicao = cliente.DataExpedicao,
+                    OrgaoExpedicao = cliente.OrgaoExpedicao,
+                    UfExpedicao = cliente.UfExpedicao,
+                    DataNascimento = cliente.DataNascimento,
+                    Sexo = cliente.Sexo,
+                    EstadoCivil = cliente.EstadoCivil,
+                    Endereco = new Endereco()
+                    {
+                        Logradouro = cliente.Logradouro,
+                        Numero = cliente.Numero,
+                        Complemento = cliente.Complemento,
+                        Bairro = cliente.Bairro,
+                        Cidade = cliente.Cidade,
+                        Uf = cliente.Uf
+                    }
+                });
+
+                context.SaveChanges();
+            }
+            return Ok(cliente);
+        }
+
     }
 }

@@ -179,6 +179,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\ClienteEnderecoDTO.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

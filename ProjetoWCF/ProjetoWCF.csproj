@@ -80,6 +80,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Content Include="ScriptDb.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

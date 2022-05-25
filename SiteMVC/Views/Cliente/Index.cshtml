@@ -1,57 +1,39 @@
 ﻿@model IEnumerable<SiteMVC.Models.ClienteViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de Clientes";
 }
 
-<h2>Index</h2>
+<h2>Lista de Clientes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo Cliente", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ClienteId)
+            CPF
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cpf)
+            NOME
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nome)
+            RG
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Rg)
+            DATA NASC.
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataExpedicao)
+            SEXO
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrgaoExpedicao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UfExpedicao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataNascimento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sexo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EstadoCivil)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EnderecoId)
+            ESTADO CIVIL
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClienteId)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Cpf)
         </td>
@@ -60,15 +42,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Rg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataExpedicao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrgaoExpedicao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UfExpedicao)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DataNascimento)
@@ -80,12 +53,9 @@
             @Html.DisplayFor(modelItem => item.EstadoCivil)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EnderecoId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Visualizar", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Excluir", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }

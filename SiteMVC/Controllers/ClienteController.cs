@@ -68,5 +68,53 @@ namespace SiteMVC.Controllers
 
             return View(cliente);
         }
+
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            ClienteViewModel cliente = null;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:61353/api/clientes");
+
+                var responseTask = client.GetAsync("?id=" + id.ToString());
+                responseTask.Wait();
+                var result = responseTask.Result;
+
+                if(result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<ClienteViewModel>();
+                    readTask.Wait();
+
+                    cliente = readTask.Result;
+                }
+            }
+            return View(cliente);
+        }
+
+        // PUT: Cliente
+        [HttpPost]
+        public ActionResult Edit(ClienteViewModel cliente)
+        {
+            if(cliente == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:61353/api/");
+
+                var putTask = client.PutAsJsonAsync<ClienteViewModel>("clientes", cliente);
+                putTask.Wait();
+                var result = putTask.Result;
+
+                if (result.IsSuccessStatusCode)
+                    return RedirectToAction("Index");
+            }
+            return View(cliente);
+        }
     }
 }

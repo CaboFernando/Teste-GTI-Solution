@@ -129,7 +129,7 @@ namespace ProjetoAPI.Controllers
         }
 
         [HttpPut]
-        public IHttpActionResult PutCliente(ClienteEnderecoDTO cliente)
+        public IHttpActionResult PutCliente(Cliente cliente)
         {
             if (!ModelState.IsValid || cliente == null)
                 return BadRequest("Dados de cliente inválidos");
@@ -156,12 +156,12 @@ namespace ProjetoAPI.Controllers
 
                     if (enderecoSelecionado != null)
                     {
-                        enderecoSelecionado.Logradouro = cliente.Logradouro;
-                        enderecoSelecionado.Numero = cliente.Numero;
-                        enderecoSelecionado.Complemento = cliente.Complemento;
-                        enderecoSelecionado.Bairro = cliente.Bairro;
-                        enderecoSelecionado.Cidade = cliente.Cidade;
-                        enderecoSelecionado.Uf = cliente.Uf;
+                        enderecoSelecionado.Logradouro = cliente.Endereco.Logradouro;
+                        enderecoSelecionado.Numero = cliente.Endereco.Numero;
+                        enderecoSelecionado.Complemento = cliente.Endereco.Complemento;
+                        enderecoSelecionado.Bairro = cliente.Endereco.Bairro;
+                        enderecoSelecionado.Cidade = cliente.Endereco.Cidade;
+                        enderecoSelecionado.Uf = cliente.Endereco.Uf;
 
                         context.Entry(enderecoSelecionado).State = EntityState.Modified;
                     }

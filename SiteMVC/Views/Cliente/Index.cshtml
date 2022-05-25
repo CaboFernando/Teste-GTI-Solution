@@ -53,9 +53,9 @@
             @Html.DisplayFor(modelItem => item.EstadoCivil)
         </td>
         <td>
-            @Html.ActionLink("Visualizar", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Editar", "Edit", new { id=item.ClienteId }) |
-            @Html.ActionLink("Excluir", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Visualizar", "Details", new { id = item.ClienteId }) |
+            @Html.ActionLink("Editar", "Edit", new { id = item.ClienteId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id = item.ClienteId }, new { onclick = "return confirm('Deseja realmente excluir esse cliente?');" })
         </td>
     </tr>
 }

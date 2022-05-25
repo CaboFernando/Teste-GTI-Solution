@@ -116,5 +116,28 @@ namespace SiteMVC.Controllers
             }
             return View(cliente);
         }
+
+        // DELTE: Cliente
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if(id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            ClienteViewModel cliente = null;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:61353/api/");
+
+                var deleteTask = client.DeleteAsync("clientes/" + id.ToString());
+                deleteTask.Wait();
+                var result = deleteTask.Result;
+
+                if (result.IsSuccessStatusCode)
+                    return RedirectToAction("Index");
+            }
+            return View(cliente);
+        }
     }
 }

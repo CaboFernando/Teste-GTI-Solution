@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
@@ -19,8 +20,6 @@ namespace SiteMVC.Controllers
             {
                 client.BaseAddress = new Uri("http://localhost:61353/api/");
 
-
-                //HTTP GET
                 var responseTask = client.GetAsync("clientes");
                 responseTask.Wait();
                 var result = responseTask.Result;
@@ -39,6 +38,35 @@ namespace SiteMVC.Controllers
                 }
                 return View(clientes);
             }
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Cliente
+        [HttpPost]
+        public ActionResult Create(ClienteViewModel cliente)
+        {
+            if (cliente == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:61353/api/");
+
+                var postTast = client.PostAsJsonAsync<ClienteViewModel>("clientes", cliente);
+                postTast.Wait();
+                var result = postTast.Result;
+
+                if (result.IsSuccessStatusCode)
+                    return RedirectToAction("Index");
+            }
+            ModelState.AddModelError(string.Empty, "Erro no Servidor. Contacte o Administrador.");
+
+            return View(cliente);
         }
     }
 }

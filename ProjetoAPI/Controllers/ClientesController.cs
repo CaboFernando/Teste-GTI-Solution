@@ -34,6 +34,7 @@ namespace ProjetoAPI.Controllers
                         Endereco = s.Endereco == null || incluirEndereco == false ? null : new Endereco()
                         {
                             EnderecoId = s.Endereco.EnderecoId,
+                            Cep = s.Endereco.Cep,
                             Logradouro = s.Endereco.Logradouro,
                             Numero = s.Endereco.Numero,
                             Complemento = s.Endereco.Complemento,
@@ -77,6 +78,7 @@ namespace ProjetoAPI.Controllers
                         Endereco = c.Endereco == null ? null : new Endereco()
                         {
                             EnderecoId = c.Endereco.EnderecoId,
+                            Cep = c.Endereco.Cep,
                             Logradouro = c.Endereco.Logradouro,
                             Numero = c.Endereco.Numero,
                             Complemento = c.Endereco.Complemento,
@@ -115,6 +117,7 @@ namespace ProjetoAPI.Controllers
                     Endereco = new Endereco()
                     {
                         Logradouro = cliente.Logradouro,
+                        Cep = cliente.Cep,
                         Numero = cliente.Numero,
                         Complemento = cliente.Complemento,
                         Bairro = cliente.Bairro,
@@ -157,6 +160,7 @@ namespace ProjetoAPI.Controllers
                     if (enderecoSelecionado != null)
                     {
                         enderecoSelecionado.Logradouro = cliente.Endereco.Logradouro;
+                        enderecoSelecionado.Cep = cliente.Endereco.Cep;
                         enderecoSelecionado.Numero = cliente.Endereco.Numero;
                         enderecoSelecionado.Complemento = cliente.Endereco.Complemento;
                         enderecoSelecionado.Bairro = cliente.Endereco.Bairro;

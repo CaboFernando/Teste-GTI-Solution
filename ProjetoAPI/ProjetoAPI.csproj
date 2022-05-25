@@ -176,6 +176,14 @@
     <Compile Include="Migrations\202205241532575_Correcao-Props.designer.cs">
       <DependentUpon>202205241532575_Correcao-Props.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205251437198_Atualização.cs" />
+    <Compile Include="Migrations\202205251437198_Atualização.designer.cs">
+      <DependentUpon>202205251437198_Atualização.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205251523046_Atualização1.cs" />
+    <Compile Include="Migrations\202205251523046_Atualização1.designer.cs">
+      <DependentUpon>202205251523046_Atualização1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -272,6 +280,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205241532575_Correcao-Props.resx">
       <DependentUpon>202205241532575_Correcao-Props.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205251437198_Atualização.resx">
+      <DependentUpon>202205251437198_Atualização.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205251523046_Atualização1.resx">
+      <DependentUpon>202205251523046_Atualização1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

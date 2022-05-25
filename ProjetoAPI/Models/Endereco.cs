@@ -13,6 +13,9 @@ namespace ProjetoAPI.Models
         [Key]
         public int EnderecoId { get; set; }
 
+        [Required]
+        public string Cep { get; set; }
+
         [Required, StringLength(150)]
         public string Logradouro { get; set; }
 

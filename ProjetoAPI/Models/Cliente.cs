@@ -22,7 +22,7 @@ namespace ProjetoAPI.Models
         [StringLength(14)]
         public string Rg { get; set; }
 
-        public DateTime DataExpedicao { get; set; }
+        public DateTime? DataExpedicao { get; set; }
 
         public string OrgaoExpedicao { get; set; }
 

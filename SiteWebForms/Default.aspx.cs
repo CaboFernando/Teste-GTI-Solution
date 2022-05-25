@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace SiteWebForms
 {
-    public partial class _Default : Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+	public partial class _default : System.Web.UI.Page
+	{
+		protected void Page_Load(object sender, EventArgs e)
+		{
 
-        }
-    }
+		}
+	}
 }

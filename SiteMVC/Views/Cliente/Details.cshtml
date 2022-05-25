@@ -1,0 +1,145 @@
+﻿@model SiteMVC.Models.ClienteViewModel
+
+@{
+    ViewBag.Title = "Detalhes do Cliente";
+}
+
+<h2>Detalhes do Cliente</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ID DO CLIENTE
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteId)
+        </dd>
+
+        <dt>
+            CPF
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+
+        <dt>
+            NOME
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            RG
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rg)
+        </dd>
+
+        <dt>
+            DATA DA EXPEDI.
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataExpedicao)
+        </dd>
+
+        <dt>
+            ÓRGÃO EXPEDI.
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrgaoExpedicao)
+        </dd>
+
+        <dt>
+            UF EXPEDI.
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UfExpedicao)
+        </dd>
+
+        <dt>
+            DATA NASCI.
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+
+        <dt>
+            SEXO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexo)
+        </dd>
+
+        <dt>
+            ESTADO CIVIL
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoCivil)
+        </dd>
+
+        <dt>
+            LOGRADOURO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Logradouro)
+        </dd>
+
+        <dt>
+            NÚMERO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Numero)
+        </dd>
+
+        <dt>
+            COMPLEMENTO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Complemento)
+        </dd>
+
+        <dt>
+            BAIRRO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Bairro)
+        </dd>
+
+        <dt>
+            CIDADE
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Cidade)
+        </dd>
+
+        <dt>
+            ESTADO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Uf)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ClienteId }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

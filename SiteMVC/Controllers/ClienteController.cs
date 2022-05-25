@@ -139,5 +139,33 @@ namespace SiteMVC.Controllers
             }
             return View(cliente);
         }
+
+        // GET: Cliente
+        [HttpGet]
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            ClienteViewModel cliente = null;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:61353/api/clientes");
+
+                var responseTask = client.GetAsync("?id=" + id.ToString());
+                responseTask.Wait();
+                var result = responseTask.Result;
+
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<ClienteViewModel>();
+                    readTask.Wait();
+
+                    cliente = readTask.Result;
+                }
+            }
+            return View(cliente);
+        }
     }
 }

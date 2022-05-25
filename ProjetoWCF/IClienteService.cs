@@ -30,7 +30,7 @@ namespace ProjetoWCF
         Cliente Update(Cliente cliente);
 
         [OperationContract]
-        Cliente Delete(int id);
+        Cliente DeleteById(int id);
 
         [OperationContract]
         Cliente Delete(Cliente cliente);

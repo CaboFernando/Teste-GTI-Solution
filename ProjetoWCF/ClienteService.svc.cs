@@ -14,7 +14,7 @@ namespace ProjetoWCF
     {
         private Entities _db;
 
-        public Cliente Delete(int id)
+        public Cliente DeleteById(int id)
         {
             using (_db = new Entities())
             {

@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoWCF", "ProjetoWCF\ProjetoWCF.csproj", "{F3A107E8-F9D9-4B1E-9CA7-B73354C61E99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteWebForms", "SiteWebForms\SiteWebForms.csproj", "{028741E5-902A-41CF-B24B-6D417D234843}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F3A107E8-F9D9-4B1E-9CA7-B73354C61E99} = {F3A107E8-F9D9-4B1E-9CA7-B73354C61E99}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

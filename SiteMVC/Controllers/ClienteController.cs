@@ -48,7 +48,7 @@ namespace SiteMVC.Controllers
 
         // POST: Cliente
         [HttpPost]
-        public ActionResult Create(ClienteViewModel cliente)
+        public ActionResult Create(ClienteEnderecoViewModel cliente)
         {
             if (cliente == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -57,7 +57,7 @@ namespace SiteMVC.Controllers
             {
                 client.BaseAddress = new Uri("http://localhost:61353/api/");
 
-                var postTast = client.PostAsJsonAsync<ClienteViewModel>("clientes", cliente);
+                var postTast = client.PostAsJsonAsync<ClienteEnderecoViewModel>("clientes", cliente);
                 postTast.Wait();
                 var result = postTast.Result;
 
